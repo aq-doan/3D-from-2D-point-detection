@@ -48,7 +48,7 @@ while cap.isOpened():
 
     left_foot = None
     right_foot = None
-    distance = None  # Initialize distance
+    distance = None 
 
     if results.pose_landmarks:
         # Set flag to True when object is detected for the first time
