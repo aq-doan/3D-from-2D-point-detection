@@ -14,7 +14,7 @@ def click_event_corners(event, x, y, flags, params):
                 cv2.setMouseCallback("image", lambda *args : None)
 
 # Load the image
-image_path = './sample/image_sample1.png'
+image_path = './sample/test.png'
 original_img = cv2.imread(image_path)
 if original_img is None:
     print("Error loading image.")
