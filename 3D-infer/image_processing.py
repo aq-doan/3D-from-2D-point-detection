@@ -50,6 +50,8 @@ cv2.line(img, points[2], points[3], (255, 0, 0), 2)
 cv2.line(img, points[3], points[0], (255, 0, 0), 2)
 
 # Define a standard size for the destination points (e.g., 1000x500 pixels)
+#change this to ratio image based on the real distance
+
 dst_width = 1000
 dst_height = 500
 dst_points = np.array([
