@@ -148,6 +148,34 @@ for i, (pixel_distance, real_distance) in enumerate(distances):
 # Draw the selected point
 cv2.circle(img, selected_point, 5, (255, 0, 0), -1)
 
+
+# Draw the vertical grid lines and find the closest one to the selected point
+closest_v_line = None
+min_v_distance = float('inf')
+for i in range(num_cols + 1):
+    line = (top_points[i], bottom_points[i])
+    cv2.line(img, *line, (0, 255, 255), 1)
+    distance = cv2.pointPolygonTest((line[0], line[1]), selected_point, True)
+    if abs(distance) < min_v_distance:
+        min_v_distance = abs(distance)
+        closest_v_line = line
+
+# Draw the horizontal grid lines and find the closest one to the selected point
+closest_h_line = None
+min_h_distance = float('inf')
+for i in range(num_rows + 1):
+    line = (left_points[i], right_points[i])
+    cv2.line(img, *line, (0, 255, 255), 1)
+    distance = cv2.pointPolygonTest((line[0], line[1]), selected_point, True)
+    if abs(distance) < min_h_distance:
+        min_h_distance = abs(distance)
+        closest_h_line = line
+
+# Highlight the closest vertical and horizontal lines
+cv2.line(img, *closest_v_line, (0, 0, 255), 2)
+cv2.line(img, *closest_h_line, (0, 0, 255), 2)
+
+
 # Display the final annotated image
 cv2.imshow("image", img)
 cv2.waitKey(0)
